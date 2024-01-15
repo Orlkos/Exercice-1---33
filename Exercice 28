@@ -1,0 +1,26 @@
+Sub SelectionnerFichiersExcel()
+    Dim fichiers As Variant
+    Dim cheminFichier As String
+    Dim message As String
+    Dim i As Integer
+    
+    ' Afficher la boîte de dialogue pour choisir des fichiers Excel
+    fichiers = Application.GetOpenFilename(FileFilter:="Fichiers Excel (*.xlsx; *.xls), *.xlsx; *.xls", _
+                                           Title:="Sélectionne un fichier", MultiSelect:=True)
+    
+    ' Vérifier si des fichiers ont été sélectionnés
+    If Not IsArray(fichiers) Then
+        MsgBox "Aucun fichier sélectionné.", vbInformation, "Information"
+        Exit Sub
+    End If
+    
+    ' Construire le message avec les noms et chemins des fichiers sélectionnés
+    For i = LBound(fichiers) To UBound(fichiers)
+        cheminFichier = fichiers(i)
+        message = message & "Nom du fichier : " & Dir(cheminFichier) & vbCrLf & "Chemin du fichier : " & cheminFichier & vbCrLf & vbCrLf
+    Next i
+    
+    ' Afficher le message avec les informations des fichiers sélectionnés
+    MsgBox message, vbInformation, "Fichiers Sélectionnés"
+End Sub
+
