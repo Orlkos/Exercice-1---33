@@ -1,0 +1,12 @@
+Sub EffacerEtVerifierA1()
+    ' Vérifier si la cellule A1 de la feuille active est vide
+    If IsEmpty(ActiveSheet.Range("A1").Value) Then
+        ' Émettre un bip
+        Beep
+        ' Afficher un message
+        MsgBox "Pas de titre", vbExclamation, "Avertissement"
+    Else
+        ' Effacer le contenu de la cellule A1
+        ActiveSheet.Range("A1").ClearContents
+    End If
+End Sub
