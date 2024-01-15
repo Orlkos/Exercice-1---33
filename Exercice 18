@@ -1,0 +1,15 @@
+Sub MettreEnFormeCelluleA1AvecAvertissement()
+    ' Vérifie si la cellule A1 de la feuille active est vide
+    If IsEmpty(ActiveSheet.Range("A1").Value) Then
+        ' Avertissement si la cellule est vide
+        MsgBox "La cellule A1 est vide. Veuillez entrer une valeur.", vbExclamation, "Avertissement"
+    Else
+        ' Applique le format en gras, souligné et rouge à la cellule A1
+        With ActiveSheet.Range("A1").Font
+            .Bold = True
+            .Underline = xlUnderlineStyleSingle
+            .Color = RGB(255, 0, 0) ' Rouge
+        End With
+    End If
+End Sub
+
