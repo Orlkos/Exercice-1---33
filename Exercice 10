@@ -1,0 +1,3 @@
+Sub AffecterValeurCelluleActive()
+ ActiveCell.Value = 12
+ End Sub
