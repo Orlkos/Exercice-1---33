@@ -1,0 +1,57 @@
+Sub Exercice14()
+    ' Procédure principale
+    
+    ' Déclaration des variables
+    Dim userInput As Variant
+    Dim isValidInput As Boolean
+    
+    ' Appel de la procédure d'input
+    userInput = DemanderValeur()
+    
+    ' Validation de l'entrée utilisateur
+    isValidInput = ValiderInput(userInput)
+    
+    ' Affichage du résultat
+    If isValidInput Then
+        MsgBox "La valeur est valide : " & userInput, vbInformation
+    Else
+        MsgBox "La valeur n'est pas valide. Veuillez entrer une valeur entre 1 et 100.", vbExclamation
+    End If
+End Sub
+
+Function DemanderValeur() As Variant
+    ' Procédure pour demander à l'utilisateur de taper une valeur entre 1 et 100
+    
+    ' Déclaration des variables
+    Dim userInput As Variant
+    
+    ' Utilisation de l'InputBox
+    userInput = InputBox("Tape une valeur entre 1 et 100", "Entrez une valeur", , 0, 0)
+    
+    ' Renvoie la valeur entrée par l'utilisateur
+    DemanderValeur = userInput
+End Function
+
+Function ValiderInput(inputValue As Variant) As Boolean
+    ' Procédure pour valider si l'entrée utilisateur est entre 1 et 100
+    
+    ' Déclaration des variables
+    Dim isValid As Boolean
+    
+    ' Validation de la plage
+    If IsNumeric(inputValue) Then
+        If inputValue >= 1 And inputValue <= 100 Then
+            isValid = True
+        End If
+    End If
+    
+    ' Renvoie le résultat de la validation
+    ValiderInput = isValid
+End Function
+
+Sub Exercice14Correction()
+    ' Appelle la procédure principale de l'exercice 14
+    Exercice14
+End Sub
+
+
