@@ -1,0 +1,4 @@
+Sub Bonjour()
+MsgBox "Bonjour", vbInformation + vbOKOnly, "Message VBA"
+
+End Sub
