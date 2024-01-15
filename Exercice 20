@@ -1,0 +1,54 @@
+Function TotalAPayer(quantite As Integer, prixHT As Double, port As Double) As Double
+    Dim remise As Double
+    Dim total As Double
+ 
+    ' Vérifier la validité de la quantité
+    If quantite <= 0 Or quantite > 50 Then
+        TotalAPayer = "Erreur dans la quantité"
+        Exit Function
+    End If
+ 
+    ' Calculer la remise en fonction de la quantité
+    Select Case quantite
+        Case 1
+            remise = 0
+        Case 2 To 10
+            remise = 0.01
+        Case 11 To 20
+            remise = 0.05
+        Case 21 To 30
+            remise = 0.1
+        Case 31 To 40
+            remise = 0.15
+        Case 41 To 50
+            remise = 0.2
+    End Select
+ 
+    ' Calculer le total
+    total = quantite * prixHT * (1 - remise) + port
+ 
+    ' Retourner le résultat
+    TotalAPayer = total
+End Function
+Sub TesterTotalAPayer()
+    Dim quantite As Integer
+    Dim prixHT As Double
+    Dim port As Double
+    Dim resultat As Variant
+ 
+    ' Entrer les valeurs de test
+    quantite = 15
+    prixHT = 10
+    port = 5
+ 
+    ' Appeler la fonction TotalAPayer
+    resultat = TotalAPayer(quantite, prixHT, port)
+ 
+    ' Afficher le résultat
+    If IsNumeric(resultat) Then
+        MsgBox "Total à payer : " & resultat
+    Else
+        MsgBox resultat
+    End If
+End Sub
+
