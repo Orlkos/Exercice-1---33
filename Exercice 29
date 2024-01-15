@@ -1,0 +1,17 @@
+Sub OuvrirFichierExcel()
+    Dim fichier As String
+    
+    ' Afficher la boîte de dialogue pour choisir un fichier Excel
+    fichier = Application.GetOpenFilename(FileFilter:="Fichiers Excel (*.xlsx; *.xls), *.xlsx; *.xls", _
+                                           Title:="Ouvrir fichier", MultiSelect:=False)
+    
+    ' Vérifier si un fichier a été sélectionné
+    If fichier <> "Faux" Then
+        ' Ouvrir le fichier sélectionné
+        Workbooks.Open fichier
+    Else
+        ' Afficher un message si aucun fichier n'est sélectionné
+        MsgBox "Aucun fichier sélectionné.", vbInformation, "Information"
+    End If
+End Sub
+
