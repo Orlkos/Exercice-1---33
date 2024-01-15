@@ -1,0 +1,21 @@
+Sub ColorierFeuilleSelonA1()
+    ' Récupère la couleur intérieure de la cellule A1
+    Dim couleurA1 As Long
+    couleurA1 = ActiveSheet.Range("A1").Interior.Color
+    
+    ' Utilise la structure If...Then...ElseIf...Else pour déterminer la couleur à appliquer
+    If couleurA1 = RGB(255, 0, 0) Then
+        ' Rouge
+        ActiveSheet.Cells.Interior.Color = RGB(255, 0, 0)
+    ElseIf couleurA1 = RGB(0, 255, 0) Then
+        ' Vert
+        ActiveSheet.Cells.Interior.Color = RGB(0, 255, 0)
+    ElseIf couleurA1 = RGB(0, 0, 255) Then
+        ' Bleu
+        ActiveSheet.Cells.Interior.Color = RGB(0, 0, 255)
+    Else
+        ' Jaune (par défaut si aucune des couleurs précédentes n'est trouvée)
+        ActiveSheet.Cells.Interior.Color = RGB(255, 255, 0)
+    End If
+End Sub
+
