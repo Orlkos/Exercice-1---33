@@ -1,0 +1,23 @@
+Sub SaisieDateValide()
+    Dim userInput As Variant
+ 
+    ' Boucle Do Until pour demander à l'utilisateur de saisir une date valide
+    Do Until IsDate(userInput)
+        ' Demander à l'utilisateur de saisir une date
+        userInput = InputBox("Entrez une date (format JJ/MM/AAAA) :")
+ 
+        ' Vérifier si l'utilisateur a annulé la saisie
+        If userInput = "" Then
+            Exit Sub ' Sortir de la procédure si la saisie est annulée
+        End If
+ 
+        ' Vérifier si la frappe est reconnue comme une date
+        If Not IsDate(userInput) Then
+            MsgBox "La saisie n'est pas une date valide. Veuillez réessayer.", vbExclamation
+        End If
+    Loop
+ 
+    ' Afficher la date valide
+    MsgBox "Date valide saisie : " & CDate(userInput), vbInformation
+End Sub
+
