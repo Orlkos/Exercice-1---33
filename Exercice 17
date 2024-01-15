@@ -1,0 +1,12 @@
+Sub MettreEnFormeCelluleA1()
+    ' Vérifie si la cellule A1 de la feuille active n'est pas vide
+    If Not IsEmpty(ActiveSheet.Range("A1").Value) Then
+        ' Applique le format en gras, souligné et rouge à la cellule A1
+        With ActiveSheet.Range("A1").Font
+            .Bold = True
+            .Underline = xlUnderlineStyleSingle
+            .Color = RGB(255, 0, 0) ' Rouge
+        End With
+    End If
+End Sub
+
