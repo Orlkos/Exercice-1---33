@@ -1,0 +1,19 @@
+Sub SaisieEtAddition()
+    Dim nombre As Double
+    Static entreePrecedente As Double ' Variable statique pour conserver la valeur de l'entrée précédente
+
+    ' Demander à l'utilisateur de taper un nombre entre 1 et 10
+    Do
+        nombre = InputBox("Veuillez entrer un nombre entre 1 et 10:", "Saisie de nombre")
+    Loop While nombre < 1 Or nombre > 10
+
+    ' Calculer la somme du nombre actuel et de l'entrée précédente
+    Dim somme As Double
+    somme = nombre + entreePrecedente
+
+    ' Afficher le résultat dans une boîte de dialogue
+    MsgBox "La somme de " & nombre & " et de l'entrée précédente est : " & somme
+
+    ' Mettre à jour la valeur de l'entrée précédente pour la prochaine utilisation
+    entreePrecedente = somme
+End Sub
