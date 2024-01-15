@@ -1,0 +1,10 @@
+Sub RemplirFeuilleCharleroi()
+    ' Activer la feuille "Charleroi"
+    Sheets("Charleroi").Activate
+    
+    ' Boucle pour remplir les cellules de la colonne E de la ligne 5 à la ligne 1000 avec un pas de 5
+    For i = 5 To 1000 Step 5
+        ' Inscrire le texte dans la cellule E de la ligne actuelle
+        Cells(i, 5).Value = "Je suis dans la cellule " & i & " de la colonne E"
+    Next i
+End Sub
