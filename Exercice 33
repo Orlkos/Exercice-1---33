@@ -1,0 +1,72 @@
+Option Explicit
+
+Private Sub UserForm_Initialize()
+    ' Appeler cette procédure à l'initialisation du formulaire
+    ' Afficher le formulaire à l'ouverture du fichier
+    Me.Show
+End Sub
+
+Private Sub btnAddition_Click()
+    ' Effectuer l'addition
+    CalculerResultat "+"
+End Sub
+
+Private Sub btnSoustraction_Click()
+    ' Effectuer la soustraction
+    CalculerResultat "-"
+End Sub
+
+Private Sub btnMultiplication_Click()
+    ' Effectuer la multiplication
+    CalculerResultat "*"
+End Sub
+
+Private Sub btnDivision_Click()
+    ' Effectuer la division
+    CalculerResultat "/"
+End Sub
+
+Private Sub btnQuitter_Click()
+    ' Enregistrer le fichier et fermer le formulaire
+    ThisWorkbook.Save
+    Unload Me
+End Sub
+
+Private Sub CalculerResultat(operateur As String)
+    ' Effectuer l'opération sélectionnée et afficher le résultat
+
+    Dim nombre1 As Double
+    Dim nombre2 As Double
+    Dim resultat As Double
+
+    ' Vérifier que les zones de texte ne sont pas vides
+    If Me.TextBox1 <> "" And Me.TextBox2 <> "" Then
+        ' Convertir les valeurs des zones de texte en nombres
+        nombre1 = CDbl(Me.TextBox1.Value)
+        nombre2 = CDbl(Me.TextBox2.Value)
+
+        ' Effectuer l'opération sélectionnée
+        Select Case operateur
+            Case "+"
+                resultat = nombre1 + nombre2
+            Case "-"
+                resultat = nombre1 - nombre2
+            Case "*"
+                resultat = nombre1 * nombre2
+            Case "/"
+                ' Vérifier la division par 0
+                If nombre2 <> 0 Then
+                    resultat = nombre1 / nombre2
+                Else
+                    MsgBox "Division par 0 impossible.", vbExclamation, "Erreur"
+                    Exit Sub
+                End If
+        End Select
+
+        ' Afficher le résultat dans la feuille 1 à partir de la cellule A1
+        Sheets(1).Range("A" & Rows.Count).End(xlUp).Offset(1, 0).Value = resultat
+        Me.LabelResultat.Caption = "Résultat : " & resultat
+    Else
+        MsgBox "Veuillez entrer des valeurs pour effectuer le calcul.", vbExclamation, "Erreur"
+    End If
+End Sub
