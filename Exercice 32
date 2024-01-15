@@ -1,0 +1,19 @@
+Sub EffacerColonnes()
+    Dim reponse As VbMsgBoxResult
+    
+    ' Afficher une boîte de dialogue personnalisée
+    reponse = MsgBox("Voulez-vous vraiment effacer la(les) colonne(s) sélectionnée(s)?", _
+                     vbExclamation + vbYesNo + vbDefaultButton1, "Confirmation d'Effacement")
+    
+    ' Vérifier la réponse de l'utilisateur
+    If reponse = vbYes Then
+        ' Effacer les colonnes sélectionnées
+        On Error Resume Next
+        Selection.EntireColumn.Delete
+        On Error GoTo 0
+        MsgBox "Colonnes effacées avec succès.", vbInformation, "Information"
+    Else
+        ' Afficher un message si l'utilisateur choisit "Non"
+        MsgBox "Opération annulée.", vbInformation, "Information"
+    End If
+End Sub
