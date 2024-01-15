@@ -1,0 +1,28 @@
+Function CalculCirconference(diametre As Double) As Double
+    ' Calcul de la circonférence en utilisant la formule : circonférence = diamètre * 3.14
+    CalculCirconference = diametre * 3.14
+End Function
+
+Sub TesterCalculCirconference()
+    ' Exemple d'utilisation de la fonction avec un diamètre de 10
+    Dim diametreCercle As Double
+    Dim resultatCirconference As Double
+    
+    diametreCercle = 10
+    resultatCirconference = CalculCirconference(diametreCercle)
+    
+    MsgBox "La circonférence d'un cercle avec un diamètre de " & diametreCercle & " est : " & resultatCirconference
+End Sub
+
+Sub SurfaceCarre()
+    ' Exemple de calcul de la surface d'un carré avec un côté de 10
+    Dim cote As Double
+    Dim surface As Double
+    
+    cote = 10
+    surface = cote * cote
+    
+    MsgBox "La surface d'un carré avec un côté de " & cote & " est : " & surface
+End Sub
+
+
