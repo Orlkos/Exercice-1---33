@@ -1,0 +1,20 @@
+Sub RenommerFeuilles()
+    Dim classeur As Workbook
+    Dim i As Integer
+    
+    ' Référence au classeur actif
+    Set classeur = ActiveWorkbook
+    
+    ' Initialiser le compteur
+    i = 1
+    
+    ' Boucle à travers chaque feuille dans le classeur
+    For Each feuille In classeur.Sheets
+        ' Renommer la feuille avec le numéro actuel
+        feuille.Name = CStr(i)
+        
+        ' Incrémenter le compteur
+        i = i + 1
+    Next feuille
+End Sub
+
