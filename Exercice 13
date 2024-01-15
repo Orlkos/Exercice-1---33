@@ -1,0 +1,29 @@
+Sub SaisirValeurEntre1Et100()
+    ' Déclaration des variables
+    Dim valeur As Variant ' La valeur entrée par l'utilisateur
+ 
+    ' Afficher une boîte de dialogue pour saisir une valeur entre 1 et 100
+    valeur = InputBox("Tape une valeur entre 1 et 100", "Saisie de valeur", , 0, 0)
+ 
+    ' Vérifier si l'utilisateur a appuyé sur Annuler ou n'a rien saisi
+    If valeur = "" Then
+        MsgBox "Opération annulée. Aucune valeur n'a été saisie.", vbInformation
+        Exit Sub
+    End If
+ 
+    ' Convertir la valeur en nombre
+    Dim nombre As Double
+    On Error Resume Next
+    nombre = CDbl(valeur)
+    On Error GoTo 0
+ 
+    ' Vérifier si la conversion a réussi et si la valeur est entre 1 et 100
+    If IsNumeric(valeur) And nombre >= 1 And nombre <= 100 Then
+        ' Afficher la valeur saisie dans une boîte de message
+        MsgBox "La valeur saisie est : " & nombre, vbInformation
+    Else
+        ' Afficher un message d'erreur si la valeur n'est pas valide
+        MsgBox "La valeur saisie n'est pas valide. Veuillez entrer un nombre entre 1 et 100.", vbExclamation
+    End If
+End Sub
+
