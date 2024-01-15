@@ -1,0 +1,3 @@
+Sub AfficherValeurCelluleActive()
+ Dim valeurCellule As Variant valeurCellule = ActiveCell.Value MsgBox "La valeur de la cellule active est : " & valeurCellule 
+End Sub
