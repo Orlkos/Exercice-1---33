@@ -1,0 +1,7 @@
+Sub AfficherBoitesDialogueEtTri()
+    ' Afficher le nombre de boîtes de dialogue intégrées
+    MsgBox "Nombre de boîtes de dialogue intégrées : " & Application.Dialogs.Count, vbInformation, "Info"
+    
+    ' Afficher la boîte de dialogue du tri
+    Application.Dialogs(xlDialogSort).Show
+End Sub
