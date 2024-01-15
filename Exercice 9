@@ -1,0 +1,11 @@
+Const Pi As Double = 3.14159 ' Déclaration de la constante Pi
+
+Function CirconferenceCercle(diametre As Double) As Double
+    CirconferenceCercle = diametre * Pi
+End Function
+Sub surfacecarre()
+    Dim cote As Double
+    cote = 10 ' Remplacez 10 par la longueur du côté du carré que vous souhaitez calculer
+
+    MsgBox cote * cote
+End Sub
