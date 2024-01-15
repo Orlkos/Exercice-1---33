@@ -1,0 +1,40 @@
+Sub GestionErreursEtFeuilles()
+    ' Désactiver l'affichage des messages d'alerte d'Excel
+    Application.DisplayAlerts = False
+    
+    ' Référence au classeur actif
+    Dim classeur As Workbook
+    Set classeur = ActiveWorkbook
+    
+    ' Déclarer un tableau de noms de mois
+    Dim nomsMois As Variant
+    nomsMois = Array("janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre")
+    
+    ' Gestion des erreurs
+    On Error Resume Next
+    
+    ' Ajouter des feuilles si le nombre est insuffisant
+    For i = 1 To 12
+        ' Vérifier si la feuille existe, sinon l'ajouter
+        If i > classeur.Sheets.Count Then
+            classeur.Sheets.Add(After:=classeur.Sheets(classeur.Sheets.Count)).Name = nomsMois(i - 1)
+        Else
+            classeur.Sheets(i).Name = nomsMois(i - 1)
+        End If
+        
+        ' Afficher les informations sur les erreurs, le cas échéant
+        If Err.Number <> 0 Then
+            MsgBox "Erreur n° : " & Err.Number & vbCrLf & "Description : " & Err.Description, vbExclamation, "Erreur"
+            Err.Clear ' Effacer l'erreur pour continuer l'exécution
+        End If
+    Next i
+    
+    ' Retirer des feuilles si le nombre est trop élevé
+    For i = classeur.Sheets.Count To 13 Step -1
+        classeur.Sheets(i).Delete
+    Next i
+    
+    ' Réactiver l'affichage des messages d'alerte
+    Application.DisplayAlerts = True
+End Sub
+
