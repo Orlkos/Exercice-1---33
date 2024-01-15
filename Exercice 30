@@ -1,0 +1,17 @@
+Sub EnregistrerFichierExcel()
+    Dim cheminFichier As String
+    
+    ' Afficher la boîte de dialogue pour enregistrer le fichier
+    cheminFichier = Application.GetSaveAsFilename(FileFilter:="Fichiers Excel (*.xlsx), *.xlsx", _
+                                                  Title:="Enregistrer sous")
+    
+    ' Vérifier si un emplacement de stockage a été choisi
+    If cheminFichier <> "Faux" Then
+        ' Enregistrer réellement le fichier
+        ThisWorkbook.SaveAs cheminFichier
+        MsgBox "Fichier enregistré avec succès.", vbInformation, "Information"
+    Else
+        ' Afficher un message si l'utilisateur annule la boîte de dialogue
+        MsgBox "Enregistrement annulé.", vbInformation, "Information"
+    End If
+End Sub
