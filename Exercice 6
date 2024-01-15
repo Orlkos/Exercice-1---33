@@ -1,0 +1,4 @@
+Sub rechercherErreur()
+MsgBox "Erreur"
+
+End Sub
